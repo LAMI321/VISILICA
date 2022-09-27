@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VISELICA</title>
+</head>
+<body>
+    <script>
+   //создаем массив со словами
+   var words=[
+    "программа",
+    "макака",
+    "прекрасный",
+    "оладушек"
+] ;
+//выбираем случайное слово используем Math.random и Math.floor, чтобы выбрать из массива случайное слово 
+var word=words[Math.floor(Math.random()*words.length)];
+//создаем итоговый массив
+var answerArray=[];
+//создаем пустой массив под названием answerArray (итоговыймассив) и заполняе его символами подчеркивания (_), количество которых соответствует количеству букв в загаданном слове.
+
+for (var i=0; i < word.length; i++) {answerArray[i]="_";
+}
+var remainigLetters =word.length;
+//игровой цикл
+while (remainigLetters>0){
+    //показываем состояние игры объединяя элементы answerArray в строку с пробелом в качестве разделителя, а затем с помощью alert показываем эту строку отгаданных букв игрока
+    alert (answerArray.join(""));
+    //запрашиваем вариант ответаВ строке  prompt запрашивает у игрока ответ и сохраняет его в переменной guess. Далее возможен один из четырех вариантов развития событий.Первый вариант — если игрок нажмет кнопку «Отмена», guess при-
+    //мет значение null. Этот вариант мы проверяем в строке  командой if (guess === null). Если это условие даст true, мы с помощью break выйдем из цикла.
+    var quess = prompt ("угадайте букву, или нажмите Отмена для выхода из игры.");
+    if (quess===null){
+        //выходим из игрового цикла
+        break;
+    }else if (quess.length!==1){
+       //alert отображает сообщение при нажатии на кнопку "ок"
+        alert("пожалуйста,введите одиночную букву.");
+
+    }else{
+        //обновляем состояние игры
+        for (var j  = 0; j < word.length; j ++) {
+            if (word [j]=== quess) {
+           answerArray[j]=quess;
+           remainigLetters--;
+            }
+
+        }
+    
+    }
+    // конец игрового цикла
+
+}
+//отображаем ответ и поздравляем игрока 
+alert (answerArray.join(""));
+alert ("отлично! было загадано слово " + word);
+    </script>
+    
+</body>
+</html>
